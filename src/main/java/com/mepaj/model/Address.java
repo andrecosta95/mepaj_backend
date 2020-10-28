@@ -7,12 +7,17 @@ import java.io.Serializable;
 @Table(name = "address")
 public class Address implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -9142994521170185102L;
+	
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
-    private String patioArea;
-    private String number;
-    private String cep;
+
+	private String patioArea;
+
+	private String number;
+
+	private String cep;
 
     public long getId() {
         return id;

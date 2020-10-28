@@ -2,32 +2,39 @@ package com.mepaj.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -8262441316946600328L;
+
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
+    @Column(nullable = false)
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Profile profile;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Address address;
 
     private String email;
 
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd'T'")
     private Date dateBirth;
 

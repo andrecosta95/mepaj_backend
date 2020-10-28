@@ -3,11 +3,12 @@ package com.mepaj.service.impl;
 import com.mepaj.model.User;
 import com.mepaj.repository.UserRepository;
 import com.mepaj.service.UserService;
+import com.mepaj.util.excepiton.UserException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,13 +17,22 @@ public class UserServiceImpl implements UserService {
     UserRepository repository;
 
     @Override
-    public User save(User user) {
-        return repository.save(user);
+    public void save(User user) throws UserException {
+    	
+    	if(user.getName() == null || user.getDateBirth() == null) {
+    		throw new UserException("Usuário não pode ser criado");
+    	} else { 
+    		repository.save(user);
+    	}
     }
 
     @Override
-    public void deleteById(Long userId) {
-        repository.deleteById(userId);
+    public void deleteById(Long userId) throws UserException {
+    	if(repository.existsById(userId)) {
+            repository.deleteById(userId);
+    	} else {
+    		throw new UserException("ID não pode ser excluido");
+    	}
     }
 
     @Override

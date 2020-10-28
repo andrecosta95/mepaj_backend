@@ -9,18 +9,22 @@ import java.util.List;
 @Table(name = "events")
 public class Event implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -341381699340329485L;
+
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
     private Address address;
 
-    @OneToOne
+    @Column(nullable = false)
     private Theme theme;
 
+    @Column(nullable = false)
     private Date date;
 
+    @Column(nullable = false)
     private String description;
 
     @OneToMany

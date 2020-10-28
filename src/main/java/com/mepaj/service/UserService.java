@@ -1,9 +1,9 @@
 package com.mepaj.service;
 
 import com.mepaj.model.User;
+import com.mepaj.util.excepiton.UserException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -17,7 +17,7 @@ public interface UserService {
      * @return <code>User</code> object
      */
 
-    User save(User user);
+    void save(User user) throws UserException;
 
     /**
      * Method that remove a user by an id.
@@ -26,8 +26,9 @@ public interface UserService {
      * @since 24/10/2020
      *
      * @param userId
+     * @throws UserException 
      */
-    void deleteById(Long userId);
+    void deleteById(Long userId) throws UserException;
 
     /**
      * Method that find a user by an id.

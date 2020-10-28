@@ -7,10 +7,13 @@ import java.io.Serializable;
 @Table(name = "themes")
 public class Theme implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -4063406545913769268L;
+
+	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     public Long getId() {
