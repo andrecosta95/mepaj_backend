@@ -8,10 +8,10 @@ import java.io.Serializable;
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = -9142994521170185102L;
-	
+
 	@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	private String patioArea;
 
@@ -19,35 +19,35 @@ public class Address implements Serializable {
 
 	private String cep;
 
-    public long getId() {
-        return id;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public String getPatioArea() {
-        return patioArea;
-    }
+	public String getPatioArea() {
+		return patioArea;
+	}
 
-    public void setPatioArea(String patioArea) {
-        this.patioArea = patioArea;
-    }
+	public void setPatioArea(String patioArea) {
+		this.patioArea = patioArea;
+	}
 
-    public String getNumber() {
-        return number;
-    }
+	public String getNumber() {
+		return number;
+	}
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
+	public void setNumber(String number) {
+		this.number = number;
+	}
 
-    public String getCep() {
-        return cep;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 }

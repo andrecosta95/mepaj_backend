@@ -13,36 +13,36 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserRepository repository;
+	@Autowired
+	UserRepository repository;
 
-    @Override
-    public void save(User user) throws UserException {
-    	
-    	if(user.getName() == null || user.getDateBirth() == null) {
-    		throw new UserException("Usuário não pode ser criado");
-    	} else { 
-    		repository.save(user);
-    	}
-    }
+	@Override
+	public void save(User user) throws UserException {
 
-    @Override
-    public void deleteById(Long userId) throws UserException {
-    	if(repository.existsById(userId)) {
-            repository.deleteById(userId);
-    	} else {
-    		throw new UserException("ID não pode ser excluido");
-    	}
-    }
+		if (user.getName() == null || user.getDateBirth() == null) {
+			throw new UserException("Usuário não pode ser criado");
+		} else {
+			repository.save(user);
+		}
+	}
 
-    @Override
-    public User findById(Long userId) {
-        return repository.findById(userId).get();
-    }
+	@Override
+	public void deleteById(Long userId) throws UserException {
+		if (repository.existsById(userId)) {
+			repository.deleteById(userId);
+		} else {
+			throw new UserException("ID não pode ser excluido");
+		}
+	}
 
-    @Override
-    public List<User> findAll() {
-        return repository.findAll();
-    }
+	@Override
+	public User findById(Long userId) {
+		return repository.findById(userId).get();
+	}
+
+	@Override
+	public List<User> findAll() {
+		return repository.findAll();
+	}
 
 }
