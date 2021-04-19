@@ -19,7 +19,7 @@ public class Profile implements Serializable {
 
 	@NotNull
 	@Column(nullable = false)
-	private String login;
+	private String userName;
 
 	@NotNull
 	@Column(nullable = false)
@@ -45,12 +45,12 @@ public class Profile implements Serializable {
 		this.accessLevel = accessLevel;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassWord() {

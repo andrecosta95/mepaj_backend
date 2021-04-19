@@ -18,14 +18,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void save(User user) throws UserException {
-
-		if (user.getName() == null || user.getDateBirth() == null) {
-			throw new UserException("Usuário não pode ser criado");
-		} else {
-			repository.save(user);
-		}
+		repository.save(user);
 	}
-
+	
 	@Override
 	public void deleteById(Long userId) throws UserException {
 		if (repository.existsById(userId)) {
@@ -44,5 +39,5 @@ public class UserServiceImpl implements UserService {
 	public List<User> findAll() {
 		return repository.findAll();
 	}
-
+	
 }

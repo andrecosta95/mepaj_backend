@@ -21,7 +21,7 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
 	@Column(nullable = false)
@@ -39,16 +39,15 @@ public class Event implements Serializable {
 	@OneToMany
 	private List<User> usersPresent;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private User createdBy;
+	@Column(nullable = false)
+	private Long createdBy;
 
 	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date createDateEvent;
 
-	@OneToOne
-	private User orator;
+	private Long orator;
 
 	public Long getId() {
 		return id;
@@ -98,11 +97,11 @@ public class Event implements Serializable {
 		this.usersPresent = usersPresent;
 	}
 
-	public User getOrator() {
+	public Long getOrator() {
 		return orator;
 	}
 
-	public void setOrator(User orator) {
+	public void setOrator(Long orator) {
 		this.orator = orator;
 	}
 
@@ -114,11 +113,11 @@ public class Event implements Serializable {
 		this.status = status;
 	}
 
-	public User getCreatedBy() {
+	public Long getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(User createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 
