@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mepaj.util.Constants;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -34,9 +35,8 @@ public class Event implements Serializable {
 	private String description;
 
 	@Column(nullable = false)
-	private String status;
+	private String status = Constants.PENDING_APPROVAL;
 
-	@OneToMany
 	private List<User> usersPresent;
 
 	@Column(nullable = false)

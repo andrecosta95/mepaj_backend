@@ -57,4 +57,14 @@ public interface EventService {
 	 * @throws NotUserException
 	 */
 	List<Event> findAll();
+	
+	/**
+	 * Method that find events pending approval.
+	 *
+	 * @author André Costa
+	 * @since 25/2021
+	 *
+	 * @return <code>List<Event></code> object
+	 */
+	List<Event> findEventsPendingApproval();
 }

@@ -9,4 +9,8 @@ public class Constants {
 	// Types profile
 	public static final String ADM = "ADM";
 	public static final String COMMON = "COMMON";
+	
+	// Status Event
+	public static final String PENDING_APPROVAL = "Pending";
+	public static final String APPROVED = "Approved";
 }

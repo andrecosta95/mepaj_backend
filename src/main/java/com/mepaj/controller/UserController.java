@@ -1,7 +1,6 @@
 package com.mepaj.controller;
 
 import com.mepaj.model.User;
-import com.mepaj.repository.UserRepository;
 import com.mepaj.service.UserService;
 import com.mepaj.util.excepiton.UserException;
 
@@ -22,8 +21,6 @@ import java.util.List;
 public class UserController {
 
 	@Autowired
-	UserRepository userRepository;
-	@Autowired
 	UserService userService;
 
 	@ApiOperation(value = "Cadastra usuário")
@@ -36,14 +33,14 @@ public class UserController {
 	@ApiOperation(value = "Busca todos usuário cadastrados")
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		if (userService.findAll().get(0) != null) {
+		if (!userService.findAll().isEmpty()) {
 			List<User> users = userService.findAll();
-			return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			return new ResponseEntity<List<User>>(users, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "Busca usuário cadastrados por id")
+	@ApiOperation(value = "Busca usuários cadastrados por id")
 	@GetMapping(path = "/find/{id}")
 	public ResponseEntity<User> findById(@PathVariable(value = "id") long id) {
 		User user = userService.findById(id);
@@ -73,5 +70,15 @@ public class UserController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+
+	@ApiOperation(value = "Busca todos usuários pedentes de aprovação")
+	@GetMapping(path = "/findUsersPendingApproval")
+	public ResponseEntity<List<User>> findUsersPendingApproval() {
+		if (!userService.findAll().isEmpty()) {
+			List<User> users = userService.findUsersPendingApproval();
+			return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

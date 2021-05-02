@@ -30,7 +30,9 @@ public class EventServiceImpl implements EventService {
 		
 		if (user.getProfile().getAccessLevel() != Constants.ADM
 				&& user.getProfile().getIsActive() != true) {
-			event.setStatus("Pedente Aprovação");
+			event.setStatus(Constants.PENDING_APPROVAL);
+		} else {
+			event.setStatus(Constants.APPROVED);
 		}
 		eventRepository.save(event);
 	}
@@ -52,5 +54,10 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<Event> findAll() {
 		return eventRepository.findAll();
+	}
+
+	@Override
+	public List<Event> findEventsPendingApproval() {
+		return eventRepository.findEventsPendingApproval();
 	}
 }

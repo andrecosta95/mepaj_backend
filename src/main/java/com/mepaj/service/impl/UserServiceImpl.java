@@ -39,5 +39,10 @@ public class UserServiceImpl implements UserService {
 	public List<User> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public List<User> findUsersPendingApproval() {
+		return repository.findUsersPendingApproval();
+	}
 	
 }

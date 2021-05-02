@@ -50,4 +50,14 @@ public interface UserService {
 	 * @return <code>List<User></code> object
 	 */
 	List<User> findAll();
+	
+	/**
+	 * Method that find users pending approval.
+	 *
+	 * @author André Costa
+	 * @since 25/2021
+	 *
+	 * @return <code>List<User></code> object
+	 */
+	List<User> findUsersPendingApproval();
 }
